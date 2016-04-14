@@ -85,7 +85,7 @@
     </p>
   <p class="article-time">
     <time datetime="2016-04-11T14:40:42.000Z" itemprop="datePublished">2016-04-11</time>
-    更新日期:<time datetime="2016-04-14T06:08:03.000Z" itemprop="dateModified">2016-04-14</time>
+    更新日期:<time datetime="2016-04-14T06:13:39.000Z" itemprop="dateModified">2016-04-14</time>
     
   </p>
 </header>
@@ -118,33 +118,27 @@
 <li><p>-(void)applicationDidEnterBackground:(UIApplication*)application</p>
 </li>
 </ul>
-<p>程序将要进入前台</p>
+<p>程序将要进入前台 (恢复数据)</p>
 <ul>
-<li><p>恢复数据</p>
-</li>
-<li><p>-(void)applicationWillEnterForeground:(UIApplication*)application</p>
-</li>
+<li>-(void)applicationWillEnterForeground:(UIApplication*)application</li>
 </ul>
-<p>程序将要失去焦点 - 不能交互</p>
+<p>程序将要失去焦点 (不能交互)</p>
 <ul>
 <li>-(void)applicationWillResignActive:(UIApplication*)application</li>
 </ul>
-<p>程序已经获取焦点 - 可以交互</p>
+<p>程序已经获取焦点 (可以交互)</p>
 <ul>
 <li>-(void)applicationDidBecomeActive:(UIApplication*)application</li>
 </ul>
-<p>程序挂了</p>
+<p>程序挂了<br>(注意:1.用户主动关闭 2.系统因为内存不够关闭了程序)</p>
 <ul>
-<li><p>注意:1.用户主动关闭 2.系统因为内存不够关闭了程序</p>
-</li>
-<li><p>-(void)applicationWillTerminate:(UIApplication*)application</p>
-</li>
+<li>-(void)applicationWillTerminate:(UIApplication*)application</li>
 </ul>
 <p>// 程序接收到内存警告</p>
 <ul>
 <li>-(void)applicationDidReceiveMemoryWarning:(UIApplication *)application</li>
 </ul>
-<h3 id="程序启动原理图"><a href="#程序启动原理图" class="headerlink" title="程序启动原理图"></a>程序启动原理图</h3><p><img src="https://github.com/HarryLv/harrylv.github.io/tree/master/imgs/UIApplication.png" alt="image"></p>
+<h3 id="程序启动原理图"><a href="#程序启动原理图" class="headerlink" title="程序启动原理图"></a>程序启动原理图</h3><p><img src="https://github.com/HarryLv/harrylv.github.io/tree/master/imgs/uiapp.png" alt="image"></p>
 
     </div>
     <footer>
@@ -195,8 +189,8 @@ with(document)0[
 
  <nav id="pagination" >
     
+    <a href="/2016/04/11/hello-world/" class="alignleft prev" title="Hello World">Hello World</a>
     
-    <a href="/2016/04/11/hello-world/" class="alignright next" title="Hello World">Hello World</a>
     
     <div class="clearfix"></div>
 </nav>
