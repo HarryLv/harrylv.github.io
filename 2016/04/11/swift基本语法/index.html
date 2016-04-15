@@ -85,7 +85,7 @@
     </p>
   <p class="article-time">
     <time datetime="2016-04-11T14:40:42.000Z" itemprop="datePublished">2016-04-11</time>
-    更新日期:<time datetime="2016-04-14T16:25:32.000Z" itemprop="dateModified">2016-04-15</time>
+    更新日期:<time datetime="2016-04-15T04:33:52.000Z" itemprop="dateModified">2016-04-15</time>
     
   </p>
 </header>
@@ -114,7 +114,7 @@
 <li>var 定义变量，赋值之后仍然可以修改</li>
 </ul>
 <p>####常量<br>1.定义常量并且直接设置数值</p>
-<p>let x = 20<br>: 常量数值一经设置，不能修改，</p>
+<p>  let x = 20<br>  : 常量数值一经设置，不能修改，</p>
 <p>以下代码会报错<br>   x = 30</p>
 <p>2.let x1: Int :使用 <code>: 类型</code>，仅仅只定义类型，而没有设置数值</p>
 <p>常量有一次设置数值的机会</p>
@@ -208,7 +208,91 @@ let request = NSURLRequest(URL: u)
 <p><code>_</code>能够匹配任意类型</p>
 <p><code>_</code>表示忽略对应位置的值</p>
 <p>for _ in 0…10 {<br>    print(“hello”)<br>}</p>
+<p>###字符串<br><code>String 是一个结构体，性能更高</code></p>
+<pre><code>var str = &quot;Hello, World!&quot;
+print( str )
+</code></pre><p>字符串长度</p>
+<pre><code>返回以字节为单位的字符串长度，一个中文占 3 个字节
+let len1 = str.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+返回实际字符的个数
+let len2 = str.characters.count
+返回 utf8 编码长度
+let len3 = str.utf8.count
+</code></pre><p>你可以将一个字符串赋值给一个变量或常量，变量是可修改的，常量是不可修改的。</p>
+<pre><code>var str = &quot;Hello world!&quot;
+str += &quot;Swift &quot;
+</code></pre><p>字符串拼接</p>
+<p>直接在 “” 中使用 \(变量名) 的方式可以快速拼接字符串</p>
+<pre><code>let str1 = &quot;Hello&quot;
+let str2 = &quot;World&quot;
+let i = 32
+str = &quot;\(i) 个 &quot; + str1 + &quot; &quot; + str2
+</code></pre><p><code>可选项的拼接</code></p>
+<p>如果变量是可选项，拼接的结果中会有 Optional</p>
+<p>为了应对强行解包存在的风险，苹果提供了 ?? 操作符</p>
+<p>?? 操作符用于检测可选项是否为 nil</p>
+<ul>
+<li><p>如果不是 nil，使用当前值</p>
+</li>
+<li><p>如果是 nil，使用后面的值替代</p>
+<p>例</p>
+<pre><code>let  str1 = &quot;Hello&quot; 
+let str2 = &quot;World” 
+let i:Int? = 32
+str = &quot;\(i ?? 0)&quot; + str1 + str2
+</code></pre></li>
+</ul>
+<p>格式化字符串</p>
+<p>在实际开发中，如果需要指定字符串格式，可以使用 String(format:…) 的方式</p>
+<pre><code>let h = 8
+let m = 23
+let s = 9
+let timeString = String(format: &quot;%02d:%02d:%02d&quot;, arguments: [h, m, s])
+let timeStr = String(format: &quot;%02d:%02d:%02d&quot;, h, m, s)
+</code></pre><p>使用 Range 的写法</p>
+<pre><code>let helloString = &quot;在一起，就很好&quot;
+let startIndex = helloString.startIndex.advanceBy(0)
+let endIndex = helloString.endIndex.advanceBy(-1)
 
+print(heoolString.subStringWithRange(startIndex..&lt;endIndex))
+</code></pre><p>###数组<br>数组使用 [] 定义，这一点与 OC 相同</p>
+<pre><code>let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre><p>数组的类型</p>
+<ul>
+<li>如果初始化时，所有内容类型一致，择数组中保存的是该类型的内容</li>
+<li>如果初始化时，所有内容类型不一致，择数组中保存的是 NSObject</li>
+</ul>
+<p>数组的定义和实例化</p>
+<pre><code>使用 : 可以只定义数组的类型
+实例化之前不允许添加值
+使用 [类型]() 可以实例化一个空的数组
+</code></pre><p>数组的合并</p>
+<ul>
+<li>必须是相同类型的数组才能够合并</li>
+</ul>
+<p>###字典</p>
+<ul>
+<li>同样使用 [ ] 定义字典</li>
+<li>[String : NSObject] 是最常用的字典类型</li>
+</ul>
+<p>例</p>
+<pre><code>var dict = [&quot;name&quot;: &quot;zhangsan&quot;, &quot;age&quot;: 18]
+</code></pre><p>赋值</p>
+<ul>
+<li>赋值直接使用 dict[key] = value 格式</li>
+<li>如果 key 不存在，会设置新值</li>
+<li>如果 key 存在，会覆盖现有值</li>
+</ul>
+<p>例</p>
+<pre><code>如果 key 不存在，会设置新值
+dict[&quot;title&quot;] = &quot;boss&quot;
+如果 key 存在，会覆盖现有值
+dict[&quot;name&quot;] = &quot;lisi&quot;
+</code></pre><p>遍历</p>
+<pre><code>for (k, v) in dict {
+    print(&quot;\(k) ~~~ \(v)&quot;)
+}
+</code></pre>
     </div>
     <footer>
         
@@ -257,8 +341,6 @@ with(document)0[
 </article>
 
  <nav id="pagination" >
-    
-    <a href="/2016/04/11/hello-world/" class="alignleft prev" title="Hello World">Hello World</a>
     
     
     <a href="/2016/04/11/UIApplication/" class="alignright next" title="iOS程序的启动过程">iOS程序的启动过程</a>
