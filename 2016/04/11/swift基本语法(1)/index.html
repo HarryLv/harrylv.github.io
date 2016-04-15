@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="http://tajs.qq.com/stats?sId=44218032" charset="UTF-8"></script>
+  <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?7192fa361f5cabb11d8a22de41c1ba8f";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+  
+  <title>Swift基本语法（1） | Hexo</title>
+  <meta name="author" content="小磊">
+  
+  <meta name="description" content="学习总结 思考感悟 知识管理">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Swift基本语法（1）"/>
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/imgs/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header><div>
+		
+			<div id="textlogo">
+				<h1 class="site-name">Hexo</h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li> <a href="/atom.xml">RSS</a> </li>
+				</ul>
+			</nav>			
+</div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="article-info clearfix">
+  <h1 itemprop="name">
+	Swift基本语法（1）
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://harrylv.github.io" title="小磊">小磊</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-04-11T14:40:42.000Z" itemprop="datePublished">2016-04-11</time>
+    更新日期:<time datetime="2016-04-15T04:33:52.000Z" itemprop="dateModified">2016-04-15</time>
+    
+  </p>
+</header>
+    <div class="entry">
+		
+        <h2 id="与-OC-开发做一个简单的对比"><a href="#与-OC-开发做一个简单的对比" class="headerlink" title="与 OC 开发做一个简单的对比"></a>与 OC 开发做一个简单的对比</h2><ul>
+<li>在 Swift 中没有了 main.m，@UIApplicationMain 是程序入口</li>
+<li>在 Swift 中只有 .swift 文件，没有 .h/.m 文件的区分</li>
+<li>在 Swift 中，一个类就是用一对 {} 括起的，没有 @implementation 和 @end</li>
+<li>每个语句的末尾没有分号，在其他语言中，分号是用来区分不同语句的</li>
+</ul>
+<h3 id="与-OC-的语法快速对比"><a href="#与-OC-的语法快速对比" class="headerlink" title="与 OC 的语法快速对比"></a>与 OC 的语法快速对比</h3><ul>
+<li>在 OC 中 alloc / init 对应 ()</li>
+<li>在 OC 中 alloc / initWithXXX 对应 (XXX: )</li>
+<li>在 OC 中的类函数调用，在 Swift 中，直接使用 .</li>
+<li>在 Swift 中，绝大多数可以省略 self.</li>
+<li>在 OC 中的 枚举类型使用 UIButtonTypeContactAdd，而 Swift 中分开了，操作热键：回车 -&gt; 向右 -&gt; .<br>   Swift 中，枚举类型的前缀可以省略，如：.ContactAdd，但是：很多时候没有智能提示</li>
+<li><p>监听方法，#select(MyClass.click(_: num:))</p>
+<p>  <code>与swift2.1之前不同，不能直接传方法名称,需要使用#select(MyClass.func(_:))的形式</code></p>
+</li>
+<li>在 Swift 中使用 print() 替代 OC 中的 NSLog</li>
+</ul>
+<p>##常量与变量</p>
+<ul>
+<li>let 定义常量，一经赋值不允许再修改</li>
+<li>var 定义变量，赋值之后仍然可以修改</li>
+</ul>
+<p>####常量<br>1.定义常量并且直接设置数值</p>
+<p>  let x = 20<br>  : 常量数值一经设置，不能修改，</p>
+<p>以下代码会报错<br>   x = 30</p>
+<p>2.let x1: Int :使用 <code>: 类型</code>，仅仅只定义类型，而没有设置数值</p>
+<p>常量有一次设置数值的机会</p>
+<p>以下代码没有问题，因为 x1 还没有被设置数值</p>
+<p>x1 = 30</p>
+<p>3.一旦设置了数值之后，则不能再次修改</p>
+<p>以下代码会报错，因为 x1 已经被设置了数值</p>
+<p>x1 = 50</p>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>变量设置数值之后，可以继续修改数值</p>
+<p>var y = 200</p>
+<p>y = 300</p>
+<p><code>swift2.2中 var当做参数的形式被废除了</code></p>
+<p>####自动推导</p>
+<p>   Swift能够根据右边的代码，推导出变量的准确类型</p>
+<p>   通常在开发时，不需要指定变量的类型</p>
+<p>   如果要指定变量，可以在变量名后使用:，然后跟上变量的类型</p>
+<p>####没有隐式转换</p>
+<p>如果要对不同类型的数据进行计算，必须要显式的转换</p>
+<pre><code>let x2 = 100
+let y2 = 10.5
+
+let num1 = Double(x2) + y2
+let num2 = x2 + Int(y2)
+</code></pre><p>###OPtional可选项</p>
+<ul>
+<li>定义变量时，如果指定是可选的，表示该变量可以有一个指定类型的值，也可以是 nil</li>
+<li>定义变量时，在类型后面添加一个 ?，表示该变量是可选的</li>
+<li>变量可选项的默认值是 nil</li>
+<li>常量可选项没有默认值，主要用于在构造函数中给常量设置初始数值</li>
+</ul>
+<p>例：</p>
+<pre><code>num 可以是一个整数，也可以是 nil，注意如果为 nil，不能参与计算
+
+let num: Int? = 10
+</code></pre><ul>
+<li>如果 Optional 值是 nil，不允许参与计算</li>
+<li>只有解包(unwrap)后才能参与计算</li>
+<li>在变量后添加一个 !，可以强行解包</li>
+</ul>
+<p>例：</p>
+<pre><code>num可以是一个整数，也可以是 nil，注意如果为 nil，不能参与计算
+let num: Int? = 10
+
+如果 num 为 nil，使用 `!` 强行解包会报错
+let r1 = num! + 100
+
+使用可选绑定（optional binding）来判断可选类型是否包含值，当 num 为 nil 时，if 分支中的代码不会执行
+if let n = num {
+    let r = n + 10
+}
+</code></pre><p>###控制流</p>
+<ul>
+<li>Swift 中没有 C 语言中的非零即真概念</li>
+<li>在逻辑判断时必须显示地指明具体的判断条件 true / false</li>
+<li>if 语句条件的 () 可以省略</li>
+<li>但是 {} 不能省略</li>
+</ul>
+<p>####可选项判断</p>
+<ul>
+<li>由于可选项的内容可能为 nil，而一旦为 nil 则不允许参与计算</li>
+<li>因此在实际开发中，经常需要判断可选项的内容是否为 nil</li>
+</ul>
+<p>例：</p>
+<pre><code>let url = NSURL(string: &quot;http://www.baidu.com&quot;)
+
+方法1: 强行解包 - 缺陷，如果 url 为空，运行时会崩溃
+let request = NSURLRequest(URL: url!)
+
+方法2: 首先判断 - 代码中仍然需要使用 `!` 强行解包
+if url != nil {
+        let request = NSURLRequest(URL: url!)
+}
+
+方法3: 使用 `if let`，这种方式，表明一旦进入 if 分支，u 就不在是可选项
+if let u = url where u.host == &quot;www.baidu.com&quot; {
+let request = NSURLRequest(URL: u)
+}
+</code></pre><p>###for循环</p>
+<p><code>swift2.2传统 C 风格的 for 循环被干掉了</code></p>
+<pre><code>for var i= 1; i&lt;= 10; i+= 1
+{ print(&quot;\(i)&quot;) }
+</code></pre><p>以后要这么写了:</p>
+<pre><code>for i in 1...10
+{ print(&quot;\(i) &quot;) }
+</code></pre><p>for_in 0..&lt;10 表示从0到9</p>
+<p>范围 0…10 表示从0到10</p>
+<p><code>Swift2.2允许更多的关键字来做参数标签</code></p>
+<pre><code>fori in1.stride(to: 9, by: 2) { print(i) }
+</code></pre><p>这个函数很简单，由 1 开始，每次加 2，返回一系列的值，最后的结果要小于 9：</p>
+<p>####省略下标 <code>_</code></p>
+<p><code>_</code>能够匹配任意类型</p>
+<p><code>_</code>表示忽略对应位置的值</p>
+<p>for _ in 0…10 {<br>    print(“hello”)<br>}</p>
+<p>###字符串<br><code>String 是一个结构体，性能更高</code></p>
+<pre><code>var str = &quot;Hello, World!&quot;
+print( str )
+</code></pre><p>字符串长度</p>
+<pre><code>返回以字节为单位的字符串长度，一个中文占 3 个字节
+let len1 = str.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+返回实际字符的个数
+let len2 = str.characters.count
+返回 utf8 编码长度
+let len3 = str.utf8.count
+</code></pre><p>你可以将一个字符串赋值给一个变量或常量，变量是可修改的，常量是不可修改的。</p>
+<pre><code>var str = &quot;Hello world!&quot;
+str += &quot;Swift &quot;
+</code></pre><p>字符串拼接</p>
+<p>直接在 “” 中使用 \(变量名) 的方式可以快速拼接字符串</p>
+<pre><code>let str1 = &quot;Hello&quot;
+let str2 = &quot;World&quot;
+let i = 32
+str = &quot;\(i) 个 &quot; + str1 + &quot; &quot; + str2
+</code></pre><p><code>可选项的拼接</code></p>
+<p>如果变量是可选项，拼接的结果中会有 Optional</p>
+<p>为了应对强行解包存在的风险，苹果提供了 ?? 操作符</p>
+<p>?? 操作符用于检测可选项是否为 nil</p>
+<ul>
+<li><p>如果不是 nil，使用当前值</p>
+</li>
+<li><p>如果是 nil，使用后面的值替代</p>
+<p>例</p>
+<pre><code>let  str1 = &quot;Hello&quot; 
+let str2 = &quot;World” 
+let i:Int? = 32
+str = &quot;\(i ?? 0)&quot; + str1 + str2
+</code></pre></li>
+</ul>
+<p>格式化字符串</p>
+<p>在实际开发中，如果需要指定字符串格式，可以使用 String(format:…) 的方式</p>
+<pre><code>let h = 8
+let m = 23
+let s = 9
+let timeString = String(format: &quot;%02d:%02d:%02d&quot;, arguments: [h, m, s])
+let timeStr = String(format: &quot;%02d:%02d:%02d&quot;, h, m, s)
+</code></pre><p>使用 Range 的写法</p>
+<pre><code>let helloString = &quot;在一起，就很好&quot;
+let startIndex = helloString.startIndex.advanceBy(0)
+let endIndex = helloString.endIndex.advanceBy(-1)
+
+print(heoolString.subStringWithRange(startIndex..&lt;endIndex))
+</code></pre><p>###数组<br>数组使用 [] 定义，这一点与 OC 相同</p>
+<pre><code>let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre><p>数组的类型</p>
+<ul>
+<li>如果初始化时，所有内容类型一致，择数组中保存的是该类型的内容</li>
+<li>如果初始化时，所有内容类型不一致，择数组中保存的是 NSObject</li>
+</ul>
+<p>数组的定义和实例化</p>
+<pre><code>使用 : 可以只定义数组的类型
+实例化之前不允许添加值
+使用 [类型]() 可以实例化一个空的数组
+</code></pre><p>数组的合并</p>
+<ul>
+<li>必须是相同类型的数组才能够合并</li>
+</ul>
+<p>###字典</p>
+<ul>
+<li>同样使用 [ ] 定义字典</li>
+<li>[String : NSObject] 是最常用的字典类型</li>
+</ul>
+<p>例</p>
+<pre><code>var dict = [&quot;name&quot;: &quot;zhangsan&quot;, &quot;age&quot;: 18]
+</code></pre><p>赋值</p>
+<ul>
+<li>赋值直接使用 dict[key] = value 格式</li>
+<li>如果 key 不存在，会设置新值</li>
+<li>如果 key 存在，会覆盖现有值</li>
+</ul>
+<p>例</p>
+<pre><code>如果 key 不存在，会设置新值
+dict[&quot;title&quot;] = &quot;boss&quot;
+如果 key 存在，会覆盖现有值
+dict[&quot;name&quot;] = &quot;lisi&quot;
+</code></pre><p>遍历</p>
+<pre><code>for (k, v) in dict {
+    print(&quot;\(k) ~~~ \(v)&quot;)
+}
+</code></pre>
+    </div>
+    <footer>
+        
+        
+		<div class="bdsharebuttonbox">
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_count" data-cmd="count"></a>
+</div>
+<script>
+window._bd_share_config=
+{
+	"common":{
+		"bdSnsKey":{},
+		"bdText":"",
+		"bdMini":"2",
+		"bdMiniList":false,
+		"bdPic":"",
+		"bdStyle":"0",
+		"bdSize":"24"
+	},
+	"share":{},
+	"image":{
+		"viewList":["qzone","tsina","tqq","renren","weixin","fbook","twi"],
+		"viewText":"分享到：",
+		"viewSize":"24"
+	},
+	"selectShare":{
+		"bdContainerClass":null,
+		"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin","fbook","twi"]
+	}
+};
+with(document)0[
+	(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)
+];
+</script>    
+        <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+ <nav id="pagination" >
+    
+    <a href="/2016/04/11/hello-world/" class="alignleft prev" title="Hello World">Hello World</a>
+    
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+	
+	<section id="comment">
+		<!-- 多说评论框 start -->
+		<div class="ds-thread" data-thread-key="2016/04/11/swift基本语法(1)/" data-title="Swift基本语法（1）" data-url="http://harrylv.github.io/2016/04/11/swift基本语法(1)/"></div>
+		<!-- 多说评论框 end -->
+		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+		<script type="text/javascript">
+		var duoshuoQuery = {short_name:""};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+		<!-- 多说公共JS代码 end -->
+	</section>
+	
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I come,I see,I conquer <br/>
+			 </p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/lvhar216@sina.cn" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/HarryLv" target="_blank" title="github"></a>
+		
+		
+		
+		
+		<a href="mailto:lvhar216@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/huangjunhui/concise" target="_blank" title="Concise">Concise</a> © 2016 
+		
+		<a href="http://harrylv.github.io/about" target="_blank" title="小磊">小磊</a>
+		
+		</p>
+</div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/counter.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<div id="totop" style="position:fixed;bottom:100px;right:10px;cursor: pointer;">
+<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
