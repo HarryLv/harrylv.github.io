@@ -15,7 +15,7 @@
 	})();
 	</script>
   
-  <title>iOS程序的启动过程 | Hexo</title>
+  <title>Swift基本语法（2） | Hexo</title>
   <meta name="author" content="小磊">
   
   <meta name="description" content="学习总结 思考感悟 知识管理">
@@ -23,7 +23,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="iOS程序的启动过程"/>
+  <meta property="og:title" content="Swift基本语法（2）"/>
   <meta property="og:site_name" content="Hexo"/>
 
   
@@ -77,7 +77,7 @@
   <div class="post-content">
     <header class="article-info clearfix">
   <h1 itemprop="name">
-	iOS程序的启动过程
+	Swift基本语法（2）
   </h1>
   <p class="article-author">By
     
@@ -85,58 +85,98 @@
     </p>
   <p class="article-time">
     <time datetime="2016-04-11T14:40:42.000Z" itemprop="datePublished">2016-04-11</time>
-    更新日期:<time datetime="2016-04-14T07:45:42.000Z" itemprop="dateModified">2016-04-14</time>
+    更新日期:<time datetime="2016-04-16T14:37:29.000Z" itemprop="dateModified">2016-04-16</time>
     
   </p>
 </header>
     <div class="entry">
 		
-        <p>首先开来应用程序，会执行main函数。</p>
-<pre><code>int main(int argc, char * argv[]) {
-
-    @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
-       }
+        <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>#####函数的定义</p>
+<ul>
+<li>格式 func 函数名(行参列表) -&gt; 返回值 {代码实现}</li>
+<li><p>调用 let result = 函数名(值1, 参数2: 值2…)</p>
+<p>例</p>
+<p>func sum(a: Int, b: Int) -&gt; Int {</p>
+<pre><code>return a + b
+</code></pre><p>}</p>
+<p>let result = sum(10, b: 20)</p>
+</li>
+</ul>
+<p><code>没有返回值的函数，三种写法</code></p>
+<pre><code>func demo(str: String) -&gt; Void {
+    print(str)
 }
-</code></pre><p>相信学过Linux系统的小伙伴对argc与argv这两个参数并不陌生，argc是系统传入参数的个数，argv是系统传入参数的具体的值，直接传递给UIApplicationMain进行相关处理即可，不需要过多关心。</p>
-<p>之后main函数中执行UIApplicationMain函数。</p>
-<p>其中的第三个参数需要传入UIApplication类或其子类的名称，默认为nil，则用UIApplication类作为默认值<br>，指定应用程序类名，所以当传入 @“UIApplication”也没有问题。</p>
-<p>第四个参数[AppDelegate class]指定应用程序的代理类，该类必须遵守UIApplicationDelegate协议<br>，当传入@“AppDelegate”也是可以的。</p>
-<pre><code>UIApplicationMain(argc, argv, @&quot;UIApplication&quot;, @&quot;AppDelegate&quot;);
-</code></pre><p>所以UIApplicationMain()这个方法先创建了一个UIApplication对象，再去创建AppDelegate对象（AppDelegate对象是专门管代理和处理系统事件）,并将该delegate对象赋值给UIApplication对象中的delegate属性，最终系统事件就能够被接收了。</p>
-<p>接着会建立应用程序的Main Runloop（事件循环），进行事件的处理(首先会在程序完毕后调用delegate对象的application:didFinishLaunchingWithOptions:方法)。</p>
-<p>程序正常退出时UIApplicationMain函数才返回。</p>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="UIApplication"><a href="#UIApplication" class="headerlink" title="UIApplication"></a>UIApplication</h3><p>iOS<br>程序创建的第一个对象就是UIApplication对象，<br>[UIApplication sharedApplication]可以获得这个单例对象，能进行一些应用级别的操作</p>
-<h3 id="ApplicationDelegate"><a href="#ApplicationDelegate" class="headerlink" title="ApplicationDelegate"></a>ApplicationDelegate</h3><p>程序第一次加载完毕</p>
+func demo1(str: String) -&gt; () {
+    print(str)
+}
+func demo2(str: String) {
+    print(str)
+}
+</code></pre><p>#####外部参数</p>
 <ul>
-<li>-(BOOL)application:(UIApplication<em>)application didFinishLaunchingWithOptions:(NSDictionary</em>)launchOptions</li>
+<li>在形参名前再增加一个外部参数名，能够方便调用人员更好地理解函数的语义</li>
+<li>格式：func 函数名(外部参数名 形式参数名: 形式参数类型) -&gt; 返回值类型 { // 代码实现 }</li>
 </ul>
-<p>程序已经进入后台(保存数据)</p>
-<ul>
-<li>-(void)applicationDidEnterBackground:(UIApplication*)application</li>
-</ul>
-<p>程序将要进入前台 (恢复数据)</p>
-<ul>
-<li>-(void)applicationWillEnterForeground:(UIApplication*)application</li>
-</ul>
-<p>程序将要失去焦点 (不能交互)</p>
-<ul>
-<li>-(void)applicationWillResignActive:(UIApplication*)application</li>
-</ul>
-<p>程序已经获取焦点 (可以交互)</p>
-<ul>
-<li>-(void)applicationDidBecomeActive:(UIApplication*)application</li>
-</ul>
-<p>程序挂了<br>(注意:1.用户主动关闭 2.系统因为内存不够关闭了程序)</p>
-<ul>
-<li>-(void)applicationWillTerminate:(UIApplication*)application</li>
-</ul>
-<p>// 程序接收到内存警告</p>
-<ul>
-<li>-(void)applicationDidReceiveMemoryWarning:(UIApplication *)application</li>
-</ul>
-<h3 id="程序启动原理图"><a href="#程序启动原理图" class="headerlink" title="程序启动原理图"></a>程序启动原理图</h3><p><img src="https://github.com/HarryLv/harrylv.github.io/tree/master/imgs/uiapp.png" alt="image"></p>
+<p>例</p>
+<pre><code>func sum(num1 a:Int , num2 b:Int) -&gt; Int {
+    return a + b
+}
 
+sum(num1: 10, num2: 20)
+</code></pre><p>#####<code>元组作为函数返回值</code></p>
+<p>函数返回值类型可以是字符串，整型，浮点型等。</p>
+<p>元组与数组类似，不同的是，元组中的元素可以是任意类型，使用的是圆括号。</p>
+<p>你可以用元组（tuple）类型让多个值作为一个复合值从函数中返回。</p>
+<pre><code>func minMax(array: [Int]) -&gt; (min: Int, max: Int) {
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..&lt;array.count] {
+        if value &lt; currentMin {
+            currentMin = value
+        } else if value &gt; currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+
+ let bounds = minMax([60, -3, 200, 149, -39, 77])
+    print(&quot;最小值为 \(bounds.0) ，最大值为 \(bounds.max)&quot;)
+</code></pre><p>#####可变参数</p>
+<ul>
+<li>可变参数可以接受零个或多个值。函数调用时，你可以用可变参数来指定函数参数，其数量是不确定的。</li>
+<li>可变参数通过在变量类型名后面加入（…）的方式来定义。</li>
+</ul>
+<p>例</p>
+<pre><code>func vari&lt;N&gt;(members: N...){
+for i in members {
+    print(i)
+}
+}
+
+vari(4,3,5)
+vari(4.5, 3.1, 5.6)
+</code></pre><p><code>Swift2.2之后出传入的参数类型不能是 var，Swift2.2之前在定义参数类型为 var，变量参数只能在函数体内被修改，并没有实际意义。</code></p>
+<p><code>可以使用inout关键字定义函数参数，这个参数的值被修改，可以被传出替换原来的值</code></p>
+<pre><code>func swap(inout a:Int,inout b:Int){
+
+    let t = a
+    a = b
+    b = t
+}
+
+var x = 0,y = 100
+print(&quot;x = \(x) ;y = \(y)&quot;)
+
+swap(&amp;x, b:&amp;y)
+print(&quot;x = \(x) ;y = \(y)&quot;)
+</code></pre><p>#####默认形式参数值</p>
+<p>你可以通过在形式参数类型后给形式参数赋一个值来给函数的任意形式参数定义一个默认值。如果定义了默认值，你就可以在调用函数时候省略这个形式参数。</p>
+<pre><code>func sum(a: Int = 0 ,b: Int = 3)
+</code></pre><p>#####使用函数类型</p>
+<p>在 Swift 中，使用函数类型就像使用其他类型一样。例如，你可以定义一个类型为函数的常量或变量，并将适当的函数赋值给它：</p>
+<pre><code>var addition: (Int, Int) -&gt; Int = sum
+</code></pre>
     </div>
     <footer>
         
@@ -186,8 +226,10 @@ with(document)0[
 
  <nav id="pagination" >
     
+    <a href="/2016/04/11/UIApplication/" class="alignleft prev" title="iOS程序的启动过程">iOS程序的启动过程</a>
     
-    <a href="/2016/04/11/swift基本语法(2)/" class="alignright next" title="Swift基本语法（2）">Swift基本语法（2）</a>
+    
+    <a href="/2016/04/11/swift基本语法(1)/" class="alignright next" title="Swift基本语法（1）">Swift基本语法（1）</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -197,7 +239,7 @@ with(document)0[
 	
 	<section id="comment">
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="2016/04/11/UIApplication/" data-title="iOS程序的启动过程" data-url="http://harrylv.github.io/2016/04/11/UIApplication/"></div>
+		<div class="ds-thread" data-thread-key="2016/04/11/swift基本语法(2)/" data-title="Swift基本语法（2）" data-url="http://harrylv.github.io/2016/04/11/swift基本语法(2)/"></div>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">
