@@ -135,7 +135,128 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://harrylv.github.io/2016/04/11/UIApplication/" data-id="cinfouc1u0000f10yoj0opq30" class="article-share-link">Share</a>
+      <a data-url="http://harrylv.github.io/2016/04/11/UIApplication/" data-id="cj97upgck0000lgs65p4qsyn2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-swift基本语法(2)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/11/swift基本语法(2)/" class="article-date">
+  <time datetime="2016-04-11T14:40:42.000Z" itemprop="datePublished">2016-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/11/swift基本语法(2)/">Swift基本语法（2）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>#####函数的定义</p>
+<ul>
+<li>格式 func 函数名(行参列表) -&gt; 返回值 {代码实现}</li>
+<li><p>调用 let result = 函数名(值1, 参数2: 值2…)</p>
+<p>例</p>
+<p>func sum(a: Int, b: Int) -&gt; Int {</p>
+<pre><code>return a + b
+</code></pre><p>}</p>
+<p>let result = sum(10, b: 20)</p>
+</li>
+</ul>
+<p><code>没有返回值的函数，三种写法</code></p>
+<pre><code>func demo(str: String) -&gt; Void {
+    print(str)
+}
+func demo1(str: String) -&gt; () {
+    print(str)
+}
+func demo2(str: String) {
+    print(str)
+}
+</code></pre><p>#####外部参数</p>
+<ul>
+<li>在形参名前再增加一个外部参数名，能够方便调用人员更好地理解函数的语义</li>
+<li>格式：func 函数名(外部参数名 形式参数名: 形式参数类型) -&gt; 返回值类型 { // 代码实现 }</li>
+</ul>
+<p>例</p>
+<pre><code>func sum(num1 a:Int , num2 b:Int) -&gt; Int {
+    return a + b
+}
+
+sum(num1: 10, num2: 20)
+</code></pre><p>#####<code>元组作为函数返回值</code></p>
+<p>函数返回值类型可以是字符串，整型，浮点型等。</p>
+<p>元组与数组类似，不同的是，元组中的元素可以是任意类型，使用的是圆括号。</p>
+<p>你可以用元组（tuple）类型让多个值作为一个复合值从函数中返回。</p>
+<pre><code>func minMax(array: [Int]) -&gt; (min: Int, max: Int) {
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..&lt;array.count] {
+        if value &lt; currentMin {
+            currentMin = value
+        } else if value &gt; currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+
+ let bounds = minMax([60, -3, 200, 149, -39, 77])
+    print(&quot;最小值为 \(bounds.0) ，最大值为 \(bounds.max)&quot;)
+</code></pre><p>#####可变参数</p>
+<ul>
+<li>可变参数可以接受零个或多个值。函数调用时，你可以用可变参数来指定函数参数，其数量是不确定的。</li>
+<li>可变参数通过在变量类型名后面加入（…）的方式来定义。</li>
+</ul>
+<p>例</p>
+<pre><code>func vari&lt;N&gt;(members: N...){
+for i in members {
+    print(i)
+}
+}
+
+vari(4,3,5)
+vari(4.5, 3.1, 5.6)
+</code></pre><p><code>Swift2.2之后出传入的参数类型不能是 var，Swift2.2之前在定义参数类型为 var，变量参数只能在函数体内被修改，并没有实际意义。</code></p>
+<p><code>可以使用inout关键字定义函数参数，这个参数的值被修改，可以被传出替换原来的值</code></p>
+<pre><code>func swap(inout a:Int,inout b:Int){
+
+    let t = a
+    a = b
+    b = t
+}
+
+var x = 0,y = 100
+print(&quot;x = \(x) ;y = \(y)&quot;)
+
+swap(&amp;x, b:&amp;y)
+print(&quot;x = \(x) ;y = \(y)&quot;)
+</code></pre><p>#####默认形式参数值</p>
+<p>你可以通过在形式参数类型后给形式参数赋一个值来给函数的任意形式参数定义一个默认值。如果定义了默认值，你就可以在调用函数时候省略这个形式参数。</p>
+<pre><code>func sum(a: Int = 0 ,b: Int = 3)
+</code></pre><p>#####使用函数类型</p>
+<p>在 Swift 中，使用函数类型就像使用其他类型一样。例如，你可以定义一个类型为函数的常量或变量，并将适当的函数赋值给它：</p>
+<pre><code>var addition: (Int, Int) -&gt; Int = sum
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harrylv.github.io/2016/04/11/swift基本语法(2)/" data-id="cj97upgcq0001lgs69a2vr6yj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -372,128 +493,7 @@ dict[&quot;name&quot;] = &quot;lisi&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://harrylv.github.io/2016/04/11/swift基本语法(1)/" data-id="cinfouc1z0001f10yv95b708v" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-swift基本语法(2)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/04/11/swift基本语法(2)/" class="article-date">
-  <time datetime="2016-04-11T14:40:42.000Z" itemprop="datePublished">2016-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/11/swift基本语法(2)/">Swift基本语法（2）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>#####函数的定义</p>
-<ul>
-<li>格式 func 函数名(行参列表) -&gt; 返回值 {代码实现}</li>
-<li><p>调用 let result = 函数名(值1, 参数2: 值2…)</p>
-<p>例</p>
-<p>func sum(a: Int, b: Int) -&gt; Int {</p>
-<pre><code>return a + b
-</code></pre><p>}</p>
-<p>let result = sum(10, b: 20)</p>
-</li>
-</ul>
-<p><code>没有返回值的函数，三种写法</code></p>
-<pre><code>func demo(str: String) -&gt; Void {
-    print(str)
-}
-func demo1(str: String) -&gt; () {
-    print(str)
-}
-func demo2(str: String) {
-    print(str)
-}
-</code></pre><p>#####外部参数</p>
-<ul>
-<li>在形参名前再增加一个外部参数名，能够方便调用人员更好地理解函数的语义</li>
-<li>格式：func 函数名(外部参数名 形式参数名: 形式参数类型) -&gt; 返回值类型 { // 代码实现 }</li>
-</ul>
-<p>例</p>
-<pre><code>func sum(num1 a:Int , num2 b:Int) -&gt; Int {
-    return a + b
-}
-
-sum(num1: 10, num2: 20)
-</code></pre><p>#####<code>元组作为函数返回值</code></p>
-<p>函数返回值类型可以是字符串，整型，浮点型等。</p>
-<p>元组与数组类似，不同的是，元组中的元素可以是任意类型，使用的是圆括号。</p>
-<p>你可以用元组（tuple）类型让多个值作为一个复合值从函数中返回。</p>
-<pre><code>func minMax(array: [Int]) -&gt; (min: Int, max: Int) {
-    var currentMin = array[0]
-    var currentMax = array[0]
-    for value in array[1..&lt;array.count] {
-        if value &lt; currentMin {
-            currentMin = value
-        } else if value &gt; currentMax {
-            currentMax = value
-        }
-    }
-    return (currentMin, currentMax)
-}
-
- let bounds = minMax([60, -3, 200, 149, -39, 77])
-    print(&quot;最小值为 \(bounds.0) ，最大值为 \(bounds.max)&quot;)
-</code></pre><p>#####可变参数</p>
-<ul>
-<li>可变参数可以接受零个或多个值。函数调用时，你可以用可变参数来指定函数参数，其数量是不确定的。</li>
-<li>可变参数通过在变量类型名后面加入（…）的方式来定义。</li>
-</ul>
-<p>例</p>
-<pre><code>func vari&lt;N&gt;(members: N...){
-for i in members {
-    print(i)
-}
-}
-
-vari(4,3,5)
-vari(4.5, 3.1, 5.6)
-</code></pre><p><code>Swift2.2之后出传入的参数类型不能是 var，Swift2.2之前在定义参数类型为 var，变量参数只能在函数体内被修改，并没有实际意义。</code></p>
-<p><code>可以使用inout关键字定义函数参数，这个参数的值被修改，可以被传出替换原来的值</code></p>
-<pre><code>func swap(inout a:Int,inout b:Int){
-
-    let t = a
-    a = b
-    b = t
-}
-
-var x = 0,y = 100
-print(&quot;x = \(x) ;y = \(y)&quot;)
-
-swap(&amp;x, b:&amp;y)
-print(&quot;x = \(x) ;y = \(y)&quot;)
-</code></pre><p>#####默认形式参数值</p>
-<p>你可以通过在形式参数类型后给形式参数赋一个值来给函数的任意形式参数定义一个默认值。如果定义了默认值，你就可以在调用函数时候省略这个形式参数。</p>
-<pre><code>func sum(a: Int = 0 ,b: Int = 3)
-</code></pre><p>#####使用函数类型</p>
-<p>在 Swift 中，使用函数类型就像使用其他类型一样。例如，你可以定义一个类型为函数的常量或变量，并将适当的函数赋值给它：</p>
-<pre><code>var addition: (Int, Int) -&gt; Int = sum
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://harrylv.github.io/2016/04/11/swift基本语法(2)/" data-id="cinfouc220002f10yccj9dvft" class="article-share-link">Share</a>
+      <a data-url="http://harrylv.github.io/2016/04/11/swift基本语法(1)/" data-id="cj97upgd10002lgs64x29bk3y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -537,11 +537,11 @@ print(&quot;x = \(x) ;y = \(y)&quot;)
           </li>
         
           <li>
-            <a href="/2016/04/11/swift基本语法(1)/">Swift基本语法（1）</a>
+            <a href="/2016/04/11/swift基本语法(2)/">Swift基本语法（2）</a>
           </li>
         
           <li>
-            <a href="/2016/04/11/swift基本语法(2)/">Swift基本语法（2）</a>
+            <a href="/2016/04/11/swift基本语法(1)/">Swift基本语法（1）</a>
           </li>
         
       </ul>
@@ -556,7 +556,7 @@ print(&quot;x = \(x) ;y = \(y)&quot;)
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 小磊<br>
+      &copy; 2017 小磊<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
