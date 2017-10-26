@@ -1,585 +1,292 @@
-<!DOCTYPE html>
+
+
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
+  <script type="text/javascript" src="http://tajs.qq.com/stats?sId=44218032" charset="UTF-8"></script>
+  <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?7192fa361f5cabb11d8a22de41c1ba8f";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
   
   <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="author" content="小磊">
+  
   <meta name="description" content="学习总结 思考感悟 知识管理">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://harrylv.github.io/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="学习总结 思考感悟 知识管理">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="学习总结 思考感悟 知识管理">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   
+  <meta property="og:site_name" content="Hexo"/>
+
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    <meta property="og:image" content="undefined"/>
   
 
+  <link href="/imgs/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
 </head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://harrylv.github.io"></form>
-      </div>
-    </div>
-  </div>
+  <header><div>
+		
+			<div id="textlogo">
+				<h1 class="site-name">Hexo</h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li> <a href="/atom.xml">RSS</a> </li>
+				</ul>
+			</nav>			
+</div>
 </header>
-      <div class="outer">
-        <section id="main">
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
   
-    <article id="post-UIApplication" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/04/11/UIApplication/" class="article-date">
-  <time datetime="2016-04-11T14:40:42.000Z" itemprop="datePublished">2016-04-11</time>
-</a>
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
     
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/11/UIApplication/">iOS程序的启动过程</a>
-    </h1>
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2016-04-11T14:40:42.000Z"><a href="/2016/04/11/UIApplication/">2016-04-11</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/04/11/UIApplication/">iOS程序的启动过程</a></h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先开来应用程序，会执行main函数。</p>
-<pre><code>int main(int argc, char * argv[]) {
-
-    @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
-       }
-}
-</code></pre><p>相信学过Linux系统的小伙伴对argc与argv这两个参数并不陌生，argc是系统传入参数的个数，argv是系统传入参数的具体的值，直接传递给UIApplicationMain进行相关处理即可，不需要过多关心。</p>
-<p>之后main函数中执行UIApplicationMain函数。</p>
-<p>其中的第三个参数需要传入UIApplication类或其子类的名称，默认为nil，则用UIApplication类作为默认值<br>，指定应用程序类名，所以当传入 @“UIApplication”也没有问题。</p>
-<p>第四个参数[AppDelegate class]指定应用程序的代理类，该类必须遵守UIApplicationDelegate协议<br>，当传入@“AppDelegate”也是可以的。</p>
-<pre><code>UIApplicationMain(argc, argv, @&quot;UIApplication&quot;, @&quot;AppDelegate&quot;);
-</code></pre><p>所以UIApplicationMain()这个方法先创建了一个UIApplication对象，再去创建AppDelegate对象（AppDelegate对象是专门管代理和处理系统事件）,并将该delegate对象赋值给UIApplication对象中的delegate属性，最终系统事件就能够被接收了。</p>
-<p>接着会建立应用程序的Main Runloop（事件循环），进行事件的处理(首先会在程序完毕后调用delegate对象的application:didFinishLaunchingWithOptions:方法)。</p>
-<p>程序正常退出时UIApplicationMain函数才返回。</p>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="UIApplication"><a href="#UIApplication" class="headerlink" title="UIApplication"></a>UIApplication</h3><p>iOS<br>程序创建的第一个对象就是UIApplication对象，<br>[UIApplication sharedApplication]可以获得这个单例对象，能进行一些应用级别的操作</p>
-<h3 id="ApplicationDelegate"><a href="#ApplicationDelegate" class="headerlink" title="ApplicationDelegate"></a>ApplicationDelegate</h3><p>程序第一次加载完毕</p>
-<ul>
-<li>-(BOOL)application:(UIApplication<em>)application didFinishLaunchingWithOptions:(NSDictionary</em>)launchOptions</li>
-</ul>
-<p>程序已经进入后台(保存数据)</p>
-<ul>
-<li>-(void)applicationDidEnterBackground:(UIApplication*)application</li>
-</ul>
-<p>程序将要进入前台 (恢复数据)</p>
-<ul>
-<li>-(void)applicationWillEnterForeground:(UIApplication*)application</li>
-</ul>
-<p>程序将要失去焦点 (不能交互)</p>
-<ul>
-<li>-(void)applicationWillResignActive:(UIApplication*)application</li>
-</ul>
-<p>程序已经获取焦点 (可以交互)</p>
-<ul>
-<li>-(void)applicationDidBecomeActive:(UIApplication*)application</li>
-</ul>
-<p>程序挂了<br>(注意:1.用户主动关闭 2.系统因为内存不够关闭了程序)</p>
-<ul>
-<li>-(void)applicationWillTerminate:(UIApplication*)application</li>
-</ul>
-<p>// 程序接收到内存警告</p>
-<ul>
-<li>-(void)applicationDidReceiveMemoryWarning:(UIApplication *)application</li>
-</ul>
-<h3 id="程序启动原理图"><a href="#程序启动原理图" class="headerlink" title="程序启动原理图"></a>程序启动原理图</h3><p><img src="https://github.com/HarryLv/harrylv.github.io/tree/master/imgs/uiapp.png" alt="image"></p>
-
-      
+    </header>
+    <div class="entry">
+		 
     </div>
-    <footer class="article-footer">
-      <a data-url="http://harrylv.github.io/2016/04/11/UIApplication/" data-id="cj97xhc5p0000was6clu9tdb9" class="article-share-link">Share</a>
-      
-      
+    <footer>
+		<div class="alignleft">
+		<a href="/2016/04/11/UIApplication/#more" class="more-link">Read more</a>
+		</div>
+		
+		<div class="comments-count">
+			
+			<a href="/2016/04/11/UIApplication/#comment" class="ds-thread-count icon-comment" data-thread-key="2016/04/11/UIApplication/" data-count-type="comments"></a>
+			
+		</div>
+		
+        <div class="clearfix"></div>
     </footer>
   </div>
+</article>
+
+  <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2016-04-11T14:40:42.000Z"><a href="/2016/04/11/swift基本语法(2)/">2016-04-11</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/04/11/swift基本语法(2)/">Swift基本语法（2）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+		 
+    </div>
+    <footer>
+		<div class="alignleft">
+		<a href="/2016/04/11/swift基本语法(2)/#more" class="more-link">Read more</a>
+		</div>
+		
+		<div class="comments-count">
+			
+			<a href="/2016/04/11/swift基本语法(2)/#comment" class="ds-thread-count icon-comment" data-thread-key="2016/04/11/swift基本语法(2)/" data-count-type="comments"></a>
+			
+		</div>
+		
+        <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2016-04-11T14:40:42.000Z"><a href="/2016/04/11/swift基本语法(1)/">2016-04-11</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/04/11/swift基本语法(1)/">Swift基本语法（1）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+		 
+    </div>
+    <footer>
+		<div class="alignleft">
+		<a href="/2016/04/11/swift基本语法(1)/#more" class="more-link">Read more</a>
+		</div>
+		
+		<div class="comments-count">
+			
+			<a href="/2016/04/11/swift基本语法(1)/#comment" class="ds-thread-count icon-comment" data-thread-key="2016/04/11/swift基本语法(1)/" data-count-type="comments"></a>
+			
+		</div>
+		
+        <div class="clearfix"></div>
+    </footer>
+  </div>
 </article>
 
 
-  
-    <article id="post-swift基本语法(2)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/04/11/swift基本语法(2)/" class="article-date">
-  <time datetime="2016-04-11T14:40:42.000Z" itemprop="datePublished">2016-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/11/swift基本语法(2)/">Swift基本语法（2）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>#####函数的定义</p>
-<ul>
-<li>格式 func 函数名(行参列表) -&gt; 返回值 {代码实现}</li>
-<li><p>调用 let result = 函数名(值1, 参数2: 值2…)</p>
-<p>例</p>
-<p>func sum(a: Int, b: Int) -&gt; Int {</p>
-<pre><code>return a + b
-</code></pre><p>}</p>
-<p>let result = sum(10, b: 20)</p>
-</li>
-</ul>
-<p><code>没有返回值的函数，三种写法</code></p>
-<pre><code>func demo(str: String) -&gt; Void {
-    print(str)
-}
-func demo1(str: String) -&gt; () {
-    print(str)
-}
-func demo2(str: String) {
-    print(str)
-}
-</code></pre><p>#####外部参数</p>
-<ul>
-<li>在形参名前再增加一个外部参数名，能够方便调用人员更好地理解函数的语义</li>
-<li>格式：func 函数名(外部参数名 形式参数名: 形式参数类型) -&gt; 返回值类型 { // 代码实现 }</li>
-</ul>
-<p>例</p>
-<pre><code>func sum(num1 a:Int , num2 b:Int) -&gt; Int {
-    return a + b
-}
-
-sum(num1: 10, num2: 20)
-</code></pre><p>#####<code>元组作为函数返回值</code></p>
-<p>函数返回值类型可以是字符串，整型，浮点型等。</p>
-<p>元组与数组类似，不同的是，元组中的元素可以是任意类型，使用的是圆括号。</p>
-<p>你可以用元组（tuple）类型让多个值作为一个复合值从函数中返回。</p>
-<pre><code>func minMax(array: [Int]) -&gt; (min: Int, max: Int) {
-    var currentMin = array[0]
-    var currentMax = array[0]
-    for value in array[1..&lt;array.count] {
-        if value &lt; currentMin {
-            currentMin = value
-        } else if value &gt; currentMax {
-            currentMax = value
-        }
-    }
-    return (currentMin, currentMax)
-}
-
- let bounds = minMax([60, -3, 200, 149, -39, 77])
-    print(&quot;最小值为 \(bounds.0) ，最大值为 \(bounds.max)&quot;)
-</code></pre><p>#####可变参数</p>
-<ul>
-<li>可变参数可以接受零个或多个值。函数调用时，你可以用可变参数来指定函数参数，其数量是不确定的。</li>
-<li>可变参数通过在变量类型名后面加入（…）的方式来定义。</li>
-</ul>
-<p>例</p>
-<pre><code>func vari&lt;N&gt;(members: N...){
-for i in members {
-    print(i)
-}
-}
-
-vari(4,3,5)
-vari(4.5, 3.1, 5.6)
-</code></pre><p><code>Swift2.2之后出传入的参数类型不能是 var，Swift2.2之前在定义参数类型为 var，变量参数只能在函数体内被修改，并没有实际意义。</code></p>
-<p><code>可以使用inout关键字定义函数参数，这个参数的值被修改，可以被传出替换原来的值</code></p>
-<pre><code>func swap(inout a:Int,inout b:Int){
-
-    let t = a
-    a = b
-    b = t
-}
-
-var x = 0,y = 100
-print(&quot;x = \(x) ;y = \(y)&quot;)
-
-swap(&amp;x, b:&amp;y)
-print(&quot;x = \(x) ;y = \(y)&quot;)
-</code></pre><p>#####默认形式参数值</p>
-<p>你可以通过在形式参数类型后给形式参数赋一个值来给函数的任意形式参数定义一个默认值。如果定义了默认值，你就可以在调用函数时候省略这个形式参数。</p>
-<pre><code>func sum(a: Int = 0 ,b: Int = 3)
-</code></pre><p>#####使用函数类型</p>
-<p>在 Swift 中，使用函数类型就像使用其他类型一样。例如，你可以定义一个类型为函数的常量或变量，并将适当的函数赋值给它：</p>
-<pre><code>var addition: (Int, Int) -&gt; Int = sum
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://harrylv.github.io/2016/04/11/swift基本语法(2)/" data-id="cj97xhc5v0001was6g2t3ldeq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
 
 
-  
-    <article id="post-swift基本语法(1)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/04/11/swift基本语法(1)/" class="article-date">
-  <time datetime="2016-04-11T14:40:42.000Z" itemprop="datePublished">2016-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/11/swift基本语法(1)/">Swift基本语法（1）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="与-OC-开发做一个简单的对比"><a href="#与-OC-开发做一个简单的对比" class="headerlink" title="与 OC 开发做一个简单的对比"></a>与 OC 开发做一个简单的对比</h2><ul>
-<li>在 Swift 中没有了 main.m，@UIApplicationMain 是程序入口</li>
-<li>在 Swift 中只有 .swift 文件，没有 .h/.m 文件的区分</li>
-<li>在 Swift 中，一个类就是用一对 {} 括起的，没有 @implementation 和 @end</li>
-<li>每个语句的末尾没有分号，在其他语言中，分号是用来区分不同语句的</li>
-</ul>
-<h3 id="与-OC-的语法快速对比"><a href="#与-OC-的语法快速对比" class="headerlink" title="与 OC 的语法快速对比"></a>与 OC 的语法快速对比</h3><ul>
-<li>在 OC 中 alloc / init 对应 ()</li>
-<li>在 OC 中 alloc / initWithXXX 对应 (XXX: )</li>
-<li>在 OC 中的类函数调用，在 Swift 中，直接使用 .</li>
-<li>在 Swift 中，绝大多数可以省略 self.</li>
-<li>在 OC 中的 枚举类型使用 UIButtonTypeContactAdd，而 Swift 中分开了，操作热键：回车 -&gt; 向右 -&gt; .<br>   Swift 中，枚举类型的前缀可以省略，如：.ContactAdd，但是：很多时候没有智能提示</li>
-<li><p>监听方法，#select(MyClass.click(_: num:))</p>
-<p>  <code>与swift2.1之前不同，不能直接传方法名称,需要使用#select(MyClass.func(_:))的形式</code></p>
-</li>
-<li>在 Swift 中使用 print() 替代 OC 中的 NSLog</li>
-</ul>
-<p>##常量与变量</p>
-<ul>
-<li>let 定义常量，一经赋值不允许再修改</li>
-<li>var 定义变量，赋值之后仍然可以修改</li>
-</ul>
-<p>####常量<br>1.定义常量并且直接设置数值</p>
-<p>  let x = 20<br>  : 常量数值一经设置，不能修改，</p>
-<p>以下代码会报错<br>   x = 30</p>
-<p>2.let x1: Int :使用 <code>: 类型</code>，仅仅只定义类型，而没有设置数值</p>
-<p>常量有一次设置数值的机会</p>
-<p>以下代码没有问题，因为 x1 还没有被设置数值</p>
-<p>x1 = 30</p>
-<p>3.一旦设置了数值之后，则不能再次修改</p>
-<p>以下代码会报错，因为 x1 已经被设置了数值</p>
-<p>x1 = 50</p>
-<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>变量设置数值之后，可以继续修改数值</p>
-<p>var y = 200</p>
-<p>y = 300</p>
-<p><code>swift2.2中 var当做参数的形式被废除了</code></p>
-<p>####自动推导</p>
-<p>   Swift能够根据右边的代码，推导出变量的准确类型</p>
-<p>   通常在开发时，不需要指定变量的类型</p>
-<p>   如果要指定变量，可以在变量名后使用:，然后跟上变量的类型</p>
-<p>####没有隐式转换</p>
-<p>如果要对不同类型的数据进行计算，必须要显式的转换</p>
-<pre><code>let x2 = 100
-let y2 = 10.5
-
-let num1 = Double(x2) + y2
-let num2 = x2 + Int(y2)
-</code></pre><p>###OPtional可选项</p>
-<ul>
-<li>定义变量时，如果指定是可选的，表示该变量可以有一个指定类型的值，也可以是 nil</li>
-<li>定义变量时，在类型后面添加一个 ?，表示该变量是可选的</li>
-<li>变量可选项的默认值是 nil</li>
-<li>常量可选项没有默认值，主要用于在构造函数中给常量设置初始数值</li>
-</ul>
-<p>例：</p>
-<pre><code>num 可以是一个整数，也可以是 nil，注意如果为 nil，不能参与计算
-
-let num: Int? = 10
-</code></pre><ul>
-<li>如果 Optional 值是 nil，不允许参与计算</li>
-<li>只有解包(unwrap)后才能参与计算</li>
-<li>在变量后添加一个 !，可以强行解包</li>
-</ul>
-<p>例：</p>
-<pre><code>num可以是一个整数，也可以是 nil，注意如果为 nil，不能参与计算
-let num: Int? = 10
-
-如果 num 为 nil，使用 `!` 强行解包会报错
-let r1 = num! + 100
-
-使用可选绑定（optional binding）来判断可选类型是否包含值，当 num 为 nil 时，if 分支中的代码不会执行
-if let n = num {
-    let r = n + 10
-}
-</code></pre><p>###控制流</p>
-<ul>
-<li>Swift 中没有 C 语言中的非零即真概念</li>
-<li>在逻辑判断时必须显示地指明具体的判断条件 true / false</li>
-<li>if 语句条件的 () 可以省略</li>
-<li>但是 {} 不能省略</li>
-</ul>
-<p>####可选项判断</p>
-<ul>
-<li>由于可选项的内容可能为 nil，而一旦为 nil 则不允许参与计算</li>
-<li>因此在实际开发中，经常需要判断可选项的内容是否为 nil</li>
-</ul>
-<p>例：</p>
-<pre><code>let url = NSURL(string: &quot;http://www.baidu.com&quot;)
-
-方法1: 强行解包 - 缺陷，如果 url 为空，运行时会崩溃
-let request = NSURLRequest(URL: url!)
-
-方法2: 首先判断 - 代码中仍然需要使用 `!` 强行解包
-if url != nil {
-        let request = NSURLRequest(URL: url!)
-}
-
-方法3: 使用 `if let`，这种方式，表明一旦进入 if 分支，u 就不在是可选项
-if let u = url where u.host == &quot;www.baidu.com&quot; {
-let request = NSURLRequest(URL: u)
-}
-</code></pre><p>###for循环</p>
-<p><code>swift2.2传统 C 风格的 for 循环被干掉了</code></p>
-<pre><code>for var i= 1; i&lt;= 10; i+= 1
-{ print(&quot;\(i)&quot;) }
-</code></pre><p>以后要这么写了:</p>
-<pre><code>for i in 1...10
-{ print(&quot;\(i) &quot;) }
-</code></pre><p>for_in 0..&lt;10 表示从0到9</p>
-<p>范围 0…10 表示从0到10</p>
-<p><code>Swift2.2允许更多的关键字来做参数标签</code></p>
-<pre><code>fori in1.stride(to: 9, by: 2) { print(i) }
-</code></pre><p>这个函数很简单，由 1 开始，每次加 2，返回一系列的值，最后的结果要小于 9：</p>
-<p>####省略下标 <code>_</code></p>
-<p><code>_</code>能够匹配任意类型</p>
-<p><code>_</code>表示忽略对应位置的值</p>
-<p>for _ in 0…10 {<br>    print(“hello”)<br>}</p>
-<p>###字符串<br><code>String 是一个结构体，性能更高</code></p>
-<pre><code>var str = &quot;Hello, World!&quot;
-print( str )
-</code></pre><p>字符串长度</p>
-<pre><code>返回以字节为单位的字符串长度，一个中文占 3 个字节
-let len1 = str.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-返回实际字符的个数
-let len2 = str.characters.count
-返回 utf8 编码长度
-let len3 = str.utf8.count
-</code></pre><p>你可以将一个字符串赋值给一个变量或常量，变量是可修改的，常量是不可修改的。</p>
-<pre><code>var str = &quot;Hello world!&quot;
-str += &quot;Swift &quot;
-</code></pre><p>字符串拼接</p>
-<p>直接在 “” 中使用 \(变量名) 的方式可以快速拼接字符串</p>
-<pre><code>let str1 = &quot;Hello&quot;
-let str2 = &quot;World&quot;
-let i = 32
-str = &quot;\(i) 个 &quot; + str1 + &quot; &quot; + str2
-</code></pre><p><code>可选项的拼接</code></p>
-<p>如果变量是可选项，拼接的结果中会有 Optional</p>
-<p>为了应对强行解包存在的风险，苹果提供了 ?? 操作符</p>
-<p>?? 操作符用于检测可选项是否为 nil</p>
-<ul>
-<li><p>如果不是 nil，使用当前值</p>
-</li>
-<li><p>如果是 nil，使用后面的值替代</p>
-<p>例</p>
-<pre><code>let  str1 = &quot;Hello&quot; 
-let str2 = &quot;World” 
-let i:Int? = 32
-str = &quot;\(i ?? 0)&quot; + str1 + str2
-</code></pre></li>
-</ul>
-<p>格式化字符串</p>
-<p>在实际开发中，如果需要指定字符串格式，可以使用 String(format:…) 的方式</p>
-<pre><code>let h = 8
-let m = 23
-let s = 9
-let timeString = String(format: &quot;%02d:%02d:%02d&quot;, arguments: [h, m, s])
-let timeStr = String(format: &quot;%02d:%02d:%02d&quot;, h, m, s)
-</code></pre><p>使用 Range 的写法</p>
-<pre><code>let helloString = &quot;在一起，就很好&quot;
-let startIndex = helloString.startIndex.advanceBy(0)
-let endIndex = helloString.endIndex.advanceBy(-1)
-
-print(heoolString.subStringWithRange(startIndex..&lt;endIndex))
-</code></pre><p>###数组<br>数组使用 [] 定义，这一点与 OC 相同</p>
-<pre><code>let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-</code></pre><p>数组的类型</p>
-<ul>
-<li>如果初始化时，所有内容类型一致，择数组中保存的是该类型的内容</li>
-<li>如果初始化时，所有内容类型不一致，择数组中保存的是 NSObject</li>
-</ul>
-<p>数组的定义和实例化</p>
-<pre><code>使用 : 可以只定义数组的类型
-实例化之前不允许添加值
-使用 [类型]() 可以实例化一个空的数组
-</code></pre><p>数组的合并</p>
-<ul>
-<li>必须是相同类型的数组才能够合并</li>
-</ul>
-<p>###字典</p>
-<ul>
-<li>同样使用 [ ] 定义字典</li>
-<li>[String : NSObject] 是最常用的字典类型</li>
-</ul>
-<p>例</p>
-<pre><code>var dict = [&quot;name&quot;: &quot;zhangsan&quot;, &quot;age&quot;: 18]
-</code></pre><p>赋值</p>
-<ul>
-<li>赋值直接使用 dict[key] = value 格式</li>
-<li>如果 key 不存在，会设置新值</li>
-<li>如果 key 存在，会覆盖现有值</li>
-</ul>
-<p>例</p>
-<pre><code>如果 key 不存在，会设置新值
-dict[&quot;title&quot;] = &quot;boss&quot;
-如果 key 存在，会覆盖现有值
-dict[&quot;name&quot;] = &quot;lisi&quot;
-</code></pre><p>遍历</p>
-<pre><code>for (k, v) in dict {
-    print(&quot;\(k) ~~~ \(v)&quot;)
-}
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://harrylv.github.io/2016/04/11/swift基本语法(1)/" data-id="cj97xhc5y0002was625hl2fq8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/04/11/UIApplication/">iOS程序的启动过程</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/11/swift基本语法(2)/">Swift基本语法（2）</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/11/swift基本语法(1)/">Swift基本语法（1）</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
+</div></div>
+    <aside id="sidebar" class="alignright">
   
 </aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 小磊<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    <div class="clearfix"></div>
   </div>
+  <footer id="footer"><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I come,I see,I conquer <br/>
+			 </p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/lvhar216@sina.cn" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/HarryLv" target="_blank" title="github"></a>
+		
+		
+		
+		
+		<a href="mailto:lvhar216@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/huangjunhui/concise" target="_blank" title="Concise">Concise</a> © 2017 
+		
+		<a href="http://harrylv.github.io/about" target="_blank" title="小磊">小磊</a>
+		
+		</p>
+</div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/counter.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
-  </div>
+<div id="totop" style="position:fixed;bottom:100px;right:10px;cursor: pointer;">
+<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>
+
+
