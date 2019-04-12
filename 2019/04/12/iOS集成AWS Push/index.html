@@ -15,7 +15,7 @@
 	})();
 	</script>
   
-  <title>iOS12 适配 | Hexo</title>
+  <title>Hexo</title>
   <meta name="author" content="小磊">
   
   <meta name="description" content="学习总结 思考感悟 知识管理">
@@ -23,7 +23,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="iOS12 适配"/>
+  
   <meta property="og:site_name" content="Hexo"/>
 
   
@@ -77,32 +77,64 @@
   <div class="post-content">
     <header class="article-info clearfix">
   <h1 itemprop="name">
-	iOS12 适配
+	
   </h1>
   <p class="article-author">By
     
       <a href="http://harrylv.github.io" title="小磊">小磊</a>
     </p>
   <p class="article-time">
-    <time datetime="2018-09-20T09:40:43.343Z" itemprop="datePublished">2018-09-20</time>
-    更新日期:<time datetime="2018-09-20T10:05:55.117Z" itemprop="dateModified">2018-09-20</time>
+    <time datetime="2019-04-12T03:31:53.706Z" itemprop="datePublished">2019-04-12</time>
+    更新日期:<time datetime="2019-04-12T08:01:11.348Z" itemprop="dateModified">2019-04-12</time>
     
   </p>
 </header>
     <div class="entry">
 		
-        <h3 id="一、-libstdc-库"><a href="#一、-libstdc-库" class="headerlink" title="一、 libstdc++ 库"></a>一、 libstdc++ 库</h3><p>  </p><p style="text-indent:2em">项目用到了c++，依赖了libstdc++.tbd和libstdc++.6.0.9.tbd,导致整个工程编译不通过，报出library not found，C++ 的 List 找不到了,原因是苹果在XCode10和iOS12中移除了libstdc++这个库，由libc++这个库取而代之，苹果的解释是libstdc++已经标记为废弃有5年了，建议大家使用经过了llvm优化过并且全面支持C++11的libc++库。</p><p></p>
-<h4 id="临时解决办法"><a href="#临时解决办法" class="headerlink" title="临时解决办法"></a>临时解决办法</h4><p></p><p style="text-indent:2em">从XCode9的目录里，把缺失的.tbd文件拷贝到XCode10</p><p></p>
-<h4 id="正确解决办法"><a href="#正确解决办法" class="headerlink" title="正确解决办法"></a>正确解决办法</h4><p></p><p style="text-indent:2em">如果你自己的业务模块使用了libstdc++，那么就把模块代码重新调整为依赖libc++，然后重新检查是否存在问题，重新编译</p><p></p><p style="text-indent:2em">如果你引用的三方库使用了libstdc++，那么向三方库寻求支持，进行升级</p><p></p>
-<h3 id="二、-获取已连接wifi-SSID"><a href="#二、-获取已连接wifi-SSID" class="headerlink" title="二、 获取已连接wifi SSID"></a>二、 获取已连接wifi SSID</h3><p></p><p style="text-indent:2em">To use this function in iOS 12 and later, enable the Access WiFi Information capability for your app in Xcode. When you enable this capability, Xcode automatically adds the Access WiFi Information entitlement to your entitlements file and App ID.</p><p></p>
-<p>  </p><p style="text-indent:2em">首先要在将Xcode-&gt;Capabilities-&gt;Access WiFi Information开启，同时登录开发者网站，将APP ID中的Access WiFi Information开启，导出新文件。</p><p>(<a href="https://developer.apple.com/documentation/systemconfiguration/1614126-cncopycurrentnetworkinfo" target="_blank" rel="external">https://developer.apple.com/documentation/systemconfiguration/1614126-cncopycurrentnetworkinfo</a>)</p>
-<p>
+        <p>#iOS集成AWS整理PushNotification    </p>
+<p>##集成AWS</p>
+<p>###<a href="https://aws-amplify.github.io/docs/ios/push-notifications" target="_blank" rel="external">AWS官网连接</a><br><strong>案例中是Swift版本，Demo提供了OC版本的集成</strong><br>1.Profile 中配置AWS SDK</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">platform :ios, &apos;9.0&apos;</span><br><span class="line"></span><br><span class="line">target :&apos;YOUR-APP-NAME&apos; do</span><br><span class="line">  use_frameworks!</span><br><span class="line"></span><br><span class="line">    pod  &apos;AWSPinpoint&apos;, &apos;~&gt; 2.9.0&apos;</span><br><span class="line">    # other pods</span><br><span class="line">    pod  &apos;AWSMobileClient&apos;, &apos;~&gt; 2.9.0&apos;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pod install --repo-update </span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">2.导入头文件在AppDelegate中:</span><br></pre></td></tr></table></figure>
+<p> import AWSCore<br> import AWSPinpoint<br> import AWSMobileClient<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.初始化，连接AWS服务器，创建Pinpoint对象</span><br></pre></td></tr></table></figure></p>
+<p>lass AppDelegate: UIResponder, UIApplicationDelegate {</p>
+<pre><code>/** start code copy **/
+var pinpoint: AWSPinpoint?
+/** end code copy **/
 
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -&gt; Bool {
 
+     // Other didFinishLaunching code...
 
+     /** start code copy **/
+     // Create AWSMobileClient to connect with AWS
+ AWSMobileClient.sharedInstance().initialize { (userState, error) in
+       if let error = error {
+         print(&quot;Error initializing AWSMobileClient: \(error.localizedDescription)&quot;)
+       } else if let userState = userState {
+         print(&quot;AWSMobileClient initialized. Current UserState: \(userState.rawValue)&quot;)
+       }
+     }
 
+ // Initialize Pinpoint
+     let pinpointConfiguration = AWSPinpointConfiguration.defaultPinpointConfiguration(launchOptions: launchOptions)
+     pinpoint = AWSPinpoint(configuration: pinpointConfiguration)
+     /** end code copy **/
+ return true
+}
+</code></pre><p> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">初始化会访问本地awsconfiguration.json文件，成功 userState 返回 guest。</span><br><span class="line"></span><br><span class="line">###获取awsconfiguration.json</span><br><span class="line">[amplify 集成](https://aws-amplify.github.io/docs/cli/init?sdk=ios)</span><br><span class="line">执行命令</span><br></pre></td></tr></table></figure>
+<p>amplify init<br>amplify push<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">生成awsconfiguration.json放入项目中</span><br><span class="line">###上传token</span><br><span class="line">使用创建好的pinpoint上传token</span><br></pre></td></tr></table></figure></p>
+<p>func application(<br>         _ application: UIApplication,<br>         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {</p>
+<pre><code>    pinpoint!.notificationManager.interceptDidRegisterForRemoteNotifications(
+        withDeviceToken: deviceToken)
+}
+</code></pre><p>```<br>AWS后台会通过device token生成Endpoint ID，功能相同</p>
+<p><strong>AWSMobileClient库 部分代码使用Swift编写，如果是使用OC编写的项目，需要进行代码混编的集成</strong></p>
+<p><img src="https://img-blog.csdn.net/20180906114322953?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Fpbl9zaGk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/1709473-6eba1ace47db4161.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt=""></p>
+<p><strong><a href="https://github.com/HarryLv/AWS" target="_blank" rel="external">Download Demo</a></strong></p>
 
-</p>
     </div>
     <footer>
         
@@ -152,10 +184,8 @@ with(document)0[
 
  <nav id="pagination" >
     
-    <a href="/2019/04/12/iOS集成AWS Push/" class="alignleft prev" title=""></a>
     
-    
-    <a href="/2016/04/11/UIApplication/" class="alignright next" title="iOS程序的启动过程">iOS程序的启动过程</a>
+    <a href="/2018/09/20/iOS12 适配/" class="alignright next" title="iOS12 适配">iOS12 适配</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -165,7 +195,7 @@ with(document)0[
 	
 	<section id="comment">
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="2018/09/20/iOS12 适配/" data-title="iOS12 适配" data-url="http://harrylv.github.io/2018/09/20/iOS12 适配/"></div>
+		<div class="ds-thread" data-thread-key="2019/04/12/iOS集成AWS Push/" data-title="" data-url="http://harrylv.github.io/2019/04/12/iOS集成AWS Push/"></div>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">
